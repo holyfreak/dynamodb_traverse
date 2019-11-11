@@ -77,35 +77,21 @@ if __name__ == '__main__':
 `dynamodb-migration` merely has one api, that is the `traverse` call.
 
 #### Request syntax
-> client.traverse(
->
->    **{
->
->       'producer': {
->
->           'source': 'string',
->
->           'TotalSegments': 'number',
->
->           'Limit': 'number',
->
->        },
->
->       'consumer': {
->
->           'TotalSegments': 'number',
->
->           'function': 'function_label',
->
->           'timeout': 'number',
->
->           'args': 'list'
->
->        }
->
->    }
->
-> )
+```
+ client.traverse(**{
+       'producer': {
+           'source': 'string',
+           'TotalSegments': 'number',
+           'Limit': 'number',
+        },
+       'consumer': {
+           'TotalSegments': 'number',
+           'function': 'function_label',
+           'timeout': 'number',
+           'args': 'list'
+        }
+ })
+```
 
 #### Parameters
 * producer (hash) [REQUIRED] - a hash describing the producer thread

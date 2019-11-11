@@ -90,13 +90,19 @@ class DynamoDBClient(AWSBase):
         if self.local:
             return aioboto3.resource(cst.DYNAMODB, endpoint_url=cst.TEST_URL)
         else:
-            return aioboto3.resource(cst.DYNAMODB)
+            return aioboto3.resource(
+                cst.DYNAMODB,
+                aws_access_key_id=self.my_aws_access_key_id,
+                aws_secret_access_key=self.my_aws_secret_access_key)
 
     def get_client(self):
         if self.local:
             return aioboto3.client(cst.DYNAMODB, endpoint_url=cst.TEST_URL)
         else:
-            return aioboto3.client(cst.DYNAMODB)
+            return aioboto3.client(
+                cst.DYNAMODB,
+                aws_access_key_id=self.my_aws_access_key_id,
+                aws_secret_access_key=self.my_aws_secret_access_key)
 
     async def traverse(self, **config):
         ps = [asyncio.create_task(self.produce(i, **config.get(cst.PRODUCER))) for i in range(config.get(cst.PRODUCER)[cst.THREAD_COUNT])] + [

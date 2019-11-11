@@ -7,7 +7,7 @@ import dynamodb_traverse.ddb_const as cst
 
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
-    guru = DynamoDBClient(queue=asyncio.Queue(loop=loop), profile='lhe', log_path='/Users/lhe/test.log')
+    guru = DynamoDBClient(queue=asyncio.Queue(loop=loop), local=False, profile='dynamodb-lab', log_path='/Users/lhe/test.log')
 
     config_table_name = 'dev_test_table_demo_1_2_150_20_3_3_3'
 

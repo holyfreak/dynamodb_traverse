@@ -12,20 +12,16 @@ setuptools.setup(
     author='Lawrence He',
     author_email='ruyangmao1001@gmail.com',
     # Choose your license
-    license='MIT',
+    license='Apache License 2.0',
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Libraries',
 
-        # Pick your license as you wish (should match "license" above)
-        'License :: OSI Approved :: MIT License',
-
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
         'Programming Language :: Python :: 3.8',
-
     ],
     packages=setuptools.find_packages(),
     python_requires='>=3.8',

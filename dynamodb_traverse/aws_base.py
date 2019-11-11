@@ -6,8 +6,8 @@ from os.path import expanduser
 
 import boto3
 
-from dynamodb_migration.perf import time_in_millis
-from dynamodb_migration.base import Base
+from dynamodb_traverse.perf import time_in_millis
+from dynamodb_traverse.base import Base
 
 
 class AWSBase(Base):

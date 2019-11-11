@@ -4,9 +4,9 @@ import time
 import aioboto3
 from boto3.dynamodb.conditions import Key
 
-from dynamodb_migration import ddb_const as cst
-from dynamodb_migration.aws_base import AWSBase
-from dynamodb_migration.counter import AsyncCounter
+from dynamodb_traverse import ddb_const as cst
+from dynamodb_traverse.aws_base import AWSBase
+from dynamodb_traverse.counter import AsyncCounter
 
 
 async def table_query_pk(table, **query):

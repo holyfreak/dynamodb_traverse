@@ -1,9 +1,9 @@
 import asyncio
 import time
 
-from dynamodb_migration.counter import AsyncCounter
-from dynamodb_migration.main import DynamoDBClient, cardinality
-import dynamodb_migration.ddb_const as cst
+from dynamodb_traverse.counter import AsyncCounter
+from dynamodb_traverse.main import DynamoDBClient, cardinality
+import dynamodb_traverse.ddb_const as cst
 
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()

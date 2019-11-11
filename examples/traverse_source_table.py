@@ -7,7 +7,7 @@ import dynamodb_migration.ddb_const as cst
 
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
-    guru = DynamoDBClient(queue=asyncio.Queue(loop=loop), **{'aws_access_key_id': 'myFakeKey', 'aws_secret_access_key': 'myFakeSecret'})
+    guru = DynamoDBClient(queue=asyncio.Queue(loop=loop), **{'profile': 'lhe'})
 
     config_table_name = 'dev_test_table_demo_1_2_150_20_3_3_3'
 
@@ -19,7 +19,7 @@ if __name__ == '__main__':
         async def main():
             async with guru.get_dynamodb() as dynamodb:
                 table = dynamodb.Table(config_table_name)
-                await guru.traverse_sync(
+                await guru.traverse(
                     **{
                         cst.PRODUCER: {
                             cst.SOURCE_TABLE: table,

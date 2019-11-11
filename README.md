@@ -1,5 +1,5 @@
 # dynamodb_migration
-High performance, thread safe migration tool for AWS DynamoDB based on aioboto3.
+High performance, thread safe, hackable migration tool for AWS DynamoDB based on aioboto3.
 
 ### Installation/Uninstallation
 Prerequisite: aioboto3>=6.4.1
@@ -48,8 +48,8 @@ if __name__ == '__main__':
             async with client.get_dynamodb() as dynamodb:
                 table = dynamodb.Table(config_table_name)
                 
-                # check document for the schema of the parameters 
-                await client.traverse_sync(
+                # check API document section for complete schema of the parameters 
+                await client.traverse(
                     **{
                         cst.PRODUCER: {
                             cst.SOURCE_TABLE: table,
@@ -74,6 +74,35 @@ if __name__ == '__main__':
 ```
 
 ### API document (in progress)
+`dynamodb-migration` merely has one api, that is the `traverse` call.
+
+#### Request syntax
+> client.traverse(
+>    **{
+>       'producer': {
+>           'source': 'string',
+>           'TotalSegments': 'number',
+>           'Limit': 'number',
+>        },
+>       'consumer': {
+>           'TotalSegments': 'number',
+>           'function': 'function_label',
+>           'timeout': 'number',
+>           'args': 'list'
+>        }
+>    }
+> )
+
+#### Parameters
+* producer (hash) [REQUIRED] - a hash describing the producer thread
+    * source (string) [REQUIRED] - name of the source table in dynamodb
+    * TotalSegments (number) - same in [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.scan)
+    * Limit (number) - same in [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.scan)
+* consumer (hash) [REQUIRED] - a hash describing the consumer thread
+    * TotalSegments (number) - same in [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.scan)
+    * function (function_label) - pass a function to this consumer!
+    * args (list) - pass a list of args to the function you just supplied. currently we only support position based args
+    * timeout (number) - how many second should consumer wait if there's no work load available to it
 
 ### Benchmark (in progress)
 

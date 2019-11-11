@@ -98,7 +98,7 @@ class DynamoDBClient(AWSBase):
         else:
             return aioboto3.client(cst.DYNAMODB)
 
-    async def traverse_sync(self, **config):
+    async def traverse(self, **config):
         ps = [asyncio.create_task(self.produce(i, **config.get(cst.PRODUCER))) for i in range(config.get(cst.PRODUCER)[cst.THREAD_COUNT])] + [
             asyncio.create_task(self.consume(i, **config.get(cst.CONSUMER))) for i in range(config.get(cst.CONSUMER)[cst.THREAD_COUNT])]
 

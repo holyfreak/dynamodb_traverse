@@ -2,7 +2,7 @@
 High performance, thread safe, hackable migration tool for AWS DynamoDB based on aioboto3.
 
 ### Installation/Uninstallation
-Prerequisite: aioboto3>=6.4.1
+Prerequisite: python 3.8+ and aioboto3>=6.4.1 (bleeding edge)
 
 Run following command to install requirements:
 
@@ -73,10 +73,25 @@ if __name__ == '__main__':
         print(f'finished in {elapsed:0.5f} sec')
 ```
 
-### API document (in progress)
-`dynamodb-migration` merely has one api, that is the `traverse` call.
+### create client
+```
+client = DynamoDBClient(
+            queue=asyncio.Queue(loop=event_loop), 
+            profile='string',
+            log_file='string',
+            local='boolean',
+            **kwargs
+         )
+```
 
-#### Request syntax
+#### Parameters
+* queue (Queue) [REQUIRED] - (async) in memory buffer queue 
+    * event_loop (loop) [REQUIRED] - if use async queue, a loop need to be specified
+* profile (string) [REQUIRED] - name of aws profile to use, which is defined in `.aws/credentials`
+* local (boolean) [OPTIONAL] - a flag to indicate if it's local or prod env. Default to True.
+* kwargs [OPTIONAL] - check [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#client) for advanced usage
+
+### traverse
 ```
  client.traverse(**{
        'producer': {
@@ -84,12 +99,14 @@ if __name__ == '__main__':
            'TotalSegments': 'number',
            'Limit': 'number',
            'IndexName': 'string',
+            **kwargs
         },
        'consumer': {
            'TotalSegments': 'number',
            'function': 'function_label',
            'timeout': 'number',
-           'args': 'list'
+           'args': 'list',
+           **kwargs
         }
  })
 ```
@@ -100,6 +117,7 @@ if __name__ == '__main__':
     * TotalSegments (number) [REQUIRED] - same in [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.scan)
     * Limit (number) [REQUIRED] - same in [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.scan)
     * IndexName (string) [OPTIONAL] - name of the source table index. If specified, we are scanning data from target index, instead of full table. 
+    * kwargs (OPTIONAL) check [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.scan) for more advanced usage.
     
 * consumer (hash) [REQUIRED] - a hash describing the consumer thread
     * TotalSegments (number) - same in [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.scan)

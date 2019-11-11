@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='dynamodb_migration',
-    version='0.1.0',
+    version='0.1.1',
     description='High performance, thread safe migration tool for AWS DynamoDB',
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",

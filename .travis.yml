@@ -1,0 +1,11 @@
+language: python
+env:
+  - TOXENV=py38
+install:
+#  - pip install aioboto3
+  - pip install tox
+  - pip install coveralls
+script:
+  - tox
+after_success:
+  coveralls --verbose

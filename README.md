@@ -1,7 +1,7 @@
-# dynamodb_migration
-High performance, thread safe, hackable migration tool for AWS DynamoDB based on aioboto3.
+# dynamodb-traverse
+High performance, thread safe, hackable traversing tool for AWS DynamoDB based on aioboto3.
 <p align="center">
-<a href="https://travis-ci/holyshipt/dynamodb_migration"><img alt="Build Status" src="https://travis-ci.org/holyshipt/dynamodb_migration.svg?branch=master"></a>
+<a href="https://travis-ci/holyshipt/dynamodb_traverse"><img alt="Build Status" src="https://travis-ci.org/holyshipt/dynamodb_traverse.svg?branch=master"></a>
 </p>
 
 ### Installation/Uninstallation
@@ -11,13 +11,13 @@ Run following command to install requirements:
 
 `pip install aioboto3`
 
-Next, install dynamodb-migration by running:
+Next, install dynamodb-traverse by running:
 
-`pip install dynamodb-migration`
+`pip install dynamodb-traverse`
 
-To uninstall dynamodb-migration, run:
+To uninstall dynamodb-traverse, run:
 
-`pip uninstall dynamodb-migration`
+`pip uninstall dynamodb-traverse`
 
 ### Usage
 
@@ -131,6 +131,6 @@ client = DynamoDBClient(
 ### Benchmark (in progress)
 
 ### Road map
-We are currently working on a distributed migration tool that takes migration tasks execution to next level. So stay tuned!  
+We are currently working on a distributed traversing tool that takes traversing tasks execution to next level. So stay tuned!  
 
 

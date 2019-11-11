@@ -1,13 +1,13 @@
 import setuptools
 
 setuptools.setup(
-    name='dynamodb_migration',
+    name='dynamodb_traverse',
     version='0.1.1',
-    description='High performance, thread safe migration tool for AWS DynamoDB',
+    description='High performance, thread safe traversing tool for AWS DynamoDB',
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
     # The project's main homepage.
-    url='https://github.com/holyshipt/dynamodb_migration',
+    url='https://github.com/holyshipt/dynamodb_traverse',
     # Author details
     author='Lawrence He',
     author_email='ruyangmao1001@gmail.com',

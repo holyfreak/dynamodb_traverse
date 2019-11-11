@@ -83,6 +83,7 @@ if __name__ == '__main__':
            'source': 'string',
            'TotalSegments': 'number',
            'Limit': 'number',
+           'IndexName': 'string',
         },
        'consumer': {
            'TotalSegments': 'number',
@@ -96,8 +97,10 @@ if __name__ == '__main__':
 #### Parameters
 * producer (hash) [REQUIRED] - a hash describing the producer thread
     * source (string) [REQUIRED] - name of the source table in dynamodb
-    * TotalSegments (number) - same in [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.scan)
-    * Limit (number) - same in [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.scan)
+    * TotalSegments (number) [REQUIRED] - same in [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.scan)
+    * Limit (number) [REQUIRED] - same in [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.scan)
+    * IndexName (string) [OPTIONAL] - name of the source table index. If specified, we are scanning data from target index, instead of full table. 
+    
 * consumer (hash) [REQUIRED] - a hash describing the consumer thread
     * TotalSegments (number) - same in [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Client.scan)
     * function (function_label) - pass a function to this consumer!

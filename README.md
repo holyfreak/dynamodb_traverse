@@ -1,5 +1,8 @@
 # dynamodb_migration
 High performance, thread safe, hackable migration tool for AWS DynamoDB based on aioboto3.
+<p align="center">
+<a href="https://travis-ci/holyshipt/dynamodb_migration"><img alt="Build Status" src="https://travis-ci.org/holyshipt/dynamodb_migration.svg?branch=master"></a>
+</p>
 
 ### Installation/Uninstallation
 Prerequisite: python 3.8+ and aioboto3>=6.4.1 (bleeding edge)

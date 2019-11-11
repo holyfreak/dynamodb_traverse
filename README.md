@@ -4,6 +4,14 @@ High performance, thread safe, hackable traversing tool for AWS DynamoDB based o
 <a href="https://travis-ci/holyshipt/dynamodb_traverse"><img alt="Build Status" src="https://travis-ci.org/holyshipt/dynamodb_traverse.svg?branch=master"></a>
 </p>
 
+### Why manually traverse dynamodb table?
+There're tens of ways to consume dynamodb data, for example, dynamodb stream, emr dynamodb connector, kinesis stream... they are good for different use cases. Manual traverse has following benefits comparing to these solutions:
+1. Schema evolution, table migration 
+2. [Custom TTL mechanism](https://www.linkedin.com/pulse/top-reasons-why-you-should-implement-your-own-ttl-mechanism-he/)
+3. Speed control over offline traversing
+4. Work with complicated nosql schema 
+
+
 ### Installation/Uninstallation
 Prerequisite: python 3.8+ and aioboto3>=6.4.1 (bleeding edge)
 

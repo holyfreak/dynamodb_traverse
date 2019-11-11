@@ -78,19 +78,33 @@ if __name__ == '__main__':
 
 #### Request syntax
 > client.traverse(
+>
 >    **{
+>
 >       'producer': {
+>
 >           'source': 'string',
+>
 >           'TotalSegments': 'number',
+>
 >           'Limit': 'number',
+>
 >        },
+>
 >       'consumer': {
+>
 >           'TotalSegments': 'number',
+>
 >           'function': 'function_label',
+>
 >           'timeout': 'number',
+>
 >           'args': 'list'
+>
 >        }
+>
 >    }
+>
 > )
 
 #### Parameters

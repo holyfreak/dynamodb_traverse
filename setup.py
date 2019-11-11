@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='dynamodb_traverse',
-    version='0.1.2',
+    version='0.1.3',
     description='High performance, thread safe traversing tool for AWS DynamoDB',
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",

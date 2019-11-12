@@ -8,7 +8,6 @@ class Base(object):
     def __init__(self, **kwargs):
         self._setup_logging(self, **kwargs)
 
-    @staticmethod
     def _setup_logging(self, log_to_screen=False, **kwargs):
         for handler in logging.root.handlers[:]:
             logging.root.removeHandler(handler)

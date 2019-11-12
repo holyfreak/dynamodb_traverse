@@ -20,9 +20,13 @@ class AWSBase(Base):
         profile = kwargs.pop("profile", "default")
         self.my_aws_access_key_id = self.my_aws_config[profile]['aws_access_key_id']
         self.my_aws_secret_access_key = self.my_aws_config[profile]['aws_secret_access_key']
+        if 'region' in self.my_aws_config[profile]:
+            self.my_region = self.my_aws_config[profile]['region']
+        else:
+            self.my_region = 'us-east-1'
 
     def get_resource(self, resource_name, **kwargs):
-        region = kwargs.pop("region", 'us-east-1')
+        region = kwargs.pop("region", self.my_region)
         mysession = boto3.session.Session(
             aws_access_key_id=self.my_aws_access_key_id,
             aws_secret_access_key=self.my_aws_secret_access_key,
@@ -30,7 +34,7 @@ class AWSBase(Base):
         return mysession.resource(resource_name, **kwargs)
 
     def connect(self, **kwargs):
-        region = kwargs.pop("region", 'us-east-1')
+        region = kwargs.pop("region", self.my_region)
         mysession = boto3.session.Session(
             aws_access_key_id=self.my_aws_access_key_id,
             aws_secret_access_key=self.my_aws_secret_access_key,

@@ -1,0 +1,7 @@
+[my-profile]
+aws_secret_access_key = myKey
+aws_access_key_id = myId
+[my-profile-with-region]
+aws_secret_access_key = myKey
+aws_access_key_id = myId
+region = us-west-2a

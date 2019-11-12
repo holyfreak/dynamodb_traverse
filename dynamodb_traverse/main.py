@@ -110,7 +110,7 @@ class DynamoDBClient(AWSBase):
 
         await asyncio.gather(*ps)
 
-        self.logger.info("Traverse complete...")
+        self.info("Traverse complete...")
 
     async def produce(self, segment, **config):
         _counter = iteration = 0
@@ -121,7 +121,7 @@ class DynamoDBClient(AWSBase):
             iteration += 1
             _counter += response['Count']
 
-            self.logger.info(f"Producer #{segment} fetches {len(response['Items'])}"
+            self.info(f"Producer #{segment} fetches {len(response['Items'])}"
                              f" at iteration {iteration}, total count = {_counter}"
                              f" q size ~ {self.queue.qsize()}")
 
@@ -129,7 +129,7 @@ class DynamoDBClient(AWSBase):
                 break
             else:
                 cur = response[cst.LAST_EVALUATED_KEY]
-        self.logger.info(f"Producer #{segment} fetched {_counter} items in total.")
+        self.info(f"Producer #{segment} fetched {_counter} items in total.")
 
     async def consume(self, segment, **config):
         while True:
@@ -138,12 +138,12 @@ class DynamoDBClient(AWSBase):
                 if queued_item is None:
                     break
             except asyncio.TimeoutError:
-                self.logger.error(f"consumer #{segment} timeout...")
+                self.error(f"consumer #{segment} timeout...")
                 break
             try:
                 await config[cst.FUNCTION](queued_item, *config[cst.ARGS])
             except Exception as e:
-                self.logger.error(str(e))
+                self.error(str(e))
                 continue
             finally:
                 self.queue.task_done()

@@ -27,6 +27,12 @@ To uninstall dynamodb-traverse, run:
 
 `pip uninstall dynamodb-traverse`
 
+### Setup
+* `dynamodb-traverse` by default looks at `~/.aws/credentials` for profiles you specified in the client. Make sure you have created profile to access dynamodb. 
+* in 0.1.3 aws region need to be specified during client creation, by default it uses `us-east-1`
+* You can specify audit log location when initializing client. By default it writes to `~/logs/pyacm/general.log`. If directory doesn't exist it will complain.
+* We recommend using `35` as default scan batch size because of [dynamodb limitations](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+
 ### Usage
 
 Here's a sample program to traverse through a demo table called "default":
